@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogger Information</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #98FB98;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table {
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            border-top: none;
+        }
+
+        .table th {
+            background-color: #6bbf5d;
+            color: #ffffff;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #98FB98;
+        }
+
+        .form-check-label {
+            font-weight: 400;
+        }
+
+        .btn-save {
+            background-color: #6bbf5d; /* Bootstrap success color */
+            border-color: #28a745;
+            color: #ffffff; /* White text */
+        }
+
+        .btn-save:hover {
+            background-color: #6bbf5d; /* Darker shade of green on hover */
+            border-color: #1e7e34;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container mt-5">
+    <h1 th:text="${blogger.name} + ' Information'"></h1>
+
+    <form action="/save" method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Client Name</th>
+                <th>Phone Number</th>
+                <th>Contacted</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.client.firstname + ' ' + client.client.lastname}"></td>
+                <td th:text="${client.client.phone}"></td>
+                <td>
+                    <div class="form-check">
+                        <input type="hidden" name="clientId" th:value="${client.client.id}">
+                        <input type="hidden" name="bloggerId" th:value="${blogger.id}">
+                        <input class="form-check-input" type="checkbox" name="isContacted"
+                               th:checked="${client.client.isContacted}">
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Save button -->
+        <button type="submit" class="btn btn-save btn-block">Save</button>
+
+        <a href="/report" class="btn btn-back">Back</a>
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

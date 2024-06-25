@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #98FB98;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .login-box {
+            background: #ffffff; /* White background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Soft shadow */
+            width: 100%;
+            max-width: 400px;
+            color: #333; /* Dark text color */
+        }
+
+        .login-box h1 {
+            margin-bottom: 20px;
+            color: #333; /* Dark text color */
+            text-align: center;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-color: #ddd; /* Light gray border */
+        }
+
+        .form-control:focus {
+            border-color: #3498db; /* Highlight border color on focus */
+            box-shadow: none; /* Remove default focus box shadow */
+        }
+
+        .btn-primary {
+            background-color: #50C878; /* Custom primary color */
+            border-color: #3498db; /* Matching border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9; /* Darker shade on hover */
+            border-color: #2980b9; /* Darker shade border on hover */
+        }
+
+        .signup-text {
+            margin-top: 20px;
+            text-align: center;
+            color: #333; /* Dark text color */
+        }
+
+        .signup-text a {
+            color: #3498db; /* Custom link color */
+        }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h1>Login</h1>
+    <form method="post" action="/login">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+    <div class="signup-text">
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

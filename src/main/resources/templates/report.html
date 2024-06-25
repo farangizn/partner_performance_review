@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #98FB98; /* Light green background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border: 1px solid #e9ecef; /* Light gray border */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        }
+
+        h1 {
+            color: black; /* Bootstrap primary color */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table {
+            width: 100%;
+            background-color: #ffffff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        .table th,
+        .table td {
+            border-top: none; /* Remove top border from table cells */
+        }
+
+        .table th {
+            background-color: #6bbf5d; /* Lighter shade of green */
+            color: #ffffff; /* White text */
+            text-align: center;
+            vertical-align: middle;
+            border-color: #6bbf5d;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa; /* Alternate row background color */
+        }
+
+        .form-check-label {
+            font-weight: 400;
+        }
+
+        .btn-back {
+            background-color: #50C878; /* Bootstrap secondary color */
+            border-color: #6c757d;
+            color: #ffffff; /* White text */
+            margin-bottom: 20px;
+            transition: transform 0.2s ease-out;
+        }
+
+        .btn-back:hover {
+            background-color: #50C878; /* Darker shade on hover */
+            border-color: #545b62;
+            transform: translateY(-3px); /* Move button up slightly on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Report</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="background-color: #50C878; border-color: #8AFD80;">Blogger Name</th>
+            <th style="background-color: #50C878; border-color: #7DFD8A;">Number of Clients</th>
+            <th style="background-color: #50C878; border-color: #98FB98;">Contacted</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="blogger : ${bloggers}">
+            <td th:text="${blogger.name}"></td>
+            <td th:text="${blogger.clientNumber}"></td>
+            <td>
+                <a th:href="${'/info?bloggerId=' + blogger.id}" class="btn btn-back">info</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Back button -->
+    <a href="/admin" class="btn btn-back">Back</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
